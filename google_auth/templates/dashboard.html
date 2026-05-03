@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — VPBK{% endblock %}
+
+{% block content %}
+<nav class="bg-white shadow-sm">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+        <span class="font-bold text-gray-800 text-lg">VPBK Aplikace</span>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit"
+                    class="text-sm text-gray-500 hover:text-red-600 transition-colors duration-200 bg-transparent border-none cursor-pointer p-0">
+                Odhlásit
+            </button>
+        </form>
+    </div>
+</nav>
+
+<div class="flex justify-center mt-16 px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-10 w-full max-w-sm text-center">
+        <img src="{{ profile.picture }}"
+             alt="Profilový obrázek"
+             class="w-24 h-24 rounded-full mx-auto mb-5 border-4 border-gray-100 shadow-sm">
+        <h2 class="text-xl font-bold text-gray-800">{{ profile.name }}</h2>
+        <p class="text-gray-500 mt-1 text-sm">{{ profile.email }}</p>
+        <p class="text-xs text-gray-400 mt-5 pt-5 border-t border-gray-100">
+            Přihlášen přes Google OAuth2
+        </p>
+    </div>
+</div>
+{% endblock %}
